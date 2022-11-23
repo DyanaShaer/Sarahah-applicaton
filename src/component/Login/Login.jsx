@@ -12,8 +12,8 @@ let [user, setUser] = useState({
 })
 
 let navigate = useNavigate();
-let goToLogin = () => {
-  let path = '/Login'
+let goToHome = () => {
+  let path = '/Home'
   navigate(path)
 }
 
@@ -24,7 +24,7 @@ let SubmitFormData = async (e) => {
   let { data } = await axios.post("http://localhost:3003/api/v1/auth/signup", user)
   if (data.message == 'done' ) {
    
-    goToLogin();
+    goToHome();
   } else {
     alert(data.message)
 

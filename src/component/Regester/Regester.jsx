@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link , useNavigate } from 'react-router-dom';
 
-import './Regester.css'
+
 
 
 
@@ -32,7 +32,6 @@ export default function Regester() {
     */
     let { data } = await axios.post("http://localhost:3003/api/v1/auth/signup", user)
     if (data.message == 'done' ) {
-     
       goToLogin();
     } else {
       alert(data.message)

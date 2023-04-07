@@ -11,15 +11,22 @@ export default function Navbar({ loginData, logout }) {
             Menu <span className="navbar-toggler-icon" />
           </button>
           <ul className="navbar-nav ml-auto">
-          {loginData ?
-          <li className="nav-item">
-                    <Link className="nav-link" to="Home">Home</Link>
-                  </li>
-                  :
-                   <li className="nav-item">
-                  <Link className="nav-link" to="Login">Please Login in to Show Us</Link>
-                </li>
-                 }
+            {loginData ?
+              <li className="nav-item">
+                <Link className="nav-link" to="Home">Home</Link>
+              </li>
+              :
+              <li className="nav-item">
+                <Link className="nav-link" to="Login">Please Login in to Show Us</Link>
+              </li>
+            }
+
+            <li className="nav-item">
+              <Link className="nav-link" to="User">send massage</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="Accounts">Accounts</Link>
+            </li>
           </ul>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto">

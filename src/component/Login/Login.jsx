@@ -5,9 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Login({ setUserData }) {
 
   let navigate = useNavigate();
-  let goToHome = () => {
-    let path = '/Home'
-    navigate(path)
+  
+  let goToHome = (search) => {
+  let path = `/Masseges${search}`
+    navigate(path )
   }
   let [loading, setLoading] = useState(false)
   let [user, setUser] = useState({
@@ -20,26 +21,21 @@ export default function Login({ setUserData }) {
   let [errorList, seterrorList] = useState([])
 
   let SubmitFormData = async (e) => {
-    e.preventDefault();
-    let { data } = await axios.post("http://localhost:3003/api/v1/auth/signin", user)
-
-    if (data.message == 'login') {
-      console.log("error " + data.loginToken)
-      localStorage.setItem('token', data.loginToken)
-      
-      setUserData();
-      goToHome();
-
+    try {
+e.preventDefault();
+      let { data } = await axios.post("http://localhost:3000/api/v1/auth/signin", user)
+     // console.log(data)
+      if (data.message == 'success') {
+       // console.log(data.token)
+        localStorage.setItem('token', data.token)
+        setUserData();
+        let search = `?email=${user.email}`
+        goToHome(search);
+      }
+      setLoading(true)
+    } catch (error) {
+      console.log(error)
     }
-    /* if (data.message == 'login' ) {
-      console.log( data.token)
-      setUserData()
-      goToHome();
-    } else {
-      console.log("error "+ data)
-  
-    } */
-    setLoading(true)
   }
 
   let getinputvalue = (e) => {

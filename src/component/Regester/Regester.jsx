@@ -30,8 +30,8 @@ export default function Regester() {
     /*  let validateResule = validatejoi();
     seterrorList(validateResule.error.details)  
     */
-    let { data } = await axios.post("http://localhost:3003/api/v1/auth/signup", user)
-    if (data.message == 'done' ) {
+    let { data } = await axios.post("http://localhost:3000/api/v1/auth/signup", user)
+    if (data.message == 'success' ) {
       goToLogin();
     } else {
       alert(data.message)
